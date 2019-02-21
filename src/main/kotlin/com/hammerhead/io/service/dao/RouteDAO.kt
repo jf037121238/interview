@@ -13,6 +13,6 @@ class RouteDAO {
     var routeId: Int? = null
 
     @Column(name = "route")
-    var route : String ? = null
+    lateinit var route : String
 
 }

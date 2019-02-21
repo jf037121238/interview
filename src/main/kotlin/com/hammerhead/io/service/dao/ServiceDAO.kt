@@ -13,6 +13,6 @@ class ServiceDAO {
     var serviceId : Int ? = null
 
     @Column(name = "service")
-    var service : String ? = null
+    lateinit var service : String
 
 }

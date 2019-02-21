@@ -14,5 +14,5 @@ class UserDAO {
 
 
     @Column(name = "user_name")
-    var userName : String ? = null
+    lateinit var userName : String
 }

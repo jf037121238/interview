@@ -5,9 +5,9 @@ import javax.persistence.Entity
 import javax.persistence.Table
 
 @Entity
-@Table(name = "user_route")
-class UserRouteDAO {
+@Table(name = "user_service_route")
+class UserServiceRouteDAO {
 
     @EmbeddedId
-    var pk : UserRoutePK? = null
+    lateinit var pk: UserServiceRoutePK
 }

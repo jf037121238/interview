@@ -6,14 +6,14 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Embeddable
-class ServiceRoutePK constructor() : Serializable {
+class UserServiceRoutePK : Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "service_id")
-    var service : ServiceDAO? = null
+    @JoinColumn(name = "service_route_id")
+    lateinit var serviceRouteDAO: ServiceRouteDAO
 
     @ManyToOne
-    @JoinColumn(name = "route_id")
-    var route : RouteDAO? = null
+    @JoinColumn(name = "user_id")
+    lateinit var user : UserDAO
 
 }
