@@ -145,6 +145,7 @@ curl 'http://localhost:8080/route
 ```$bash
 curl 'http://localhost:8080/user/42/route'
 ["42SRT","42CVT","42Perkiomen","42CVT","42Perkiomen","42Welsh Mountain","42SRT","42Welsh Mountain","42Oaks to Philly"]
+```
 
 - All User Routes by Service
 ```$bash
