@@ -1,0 +1,11 @@
+insert into service_route (service_route_id, service_id, route_id)
+  values (1, 1, (select route_id from route where route = 'SRT'))
+        ,  (2, 1, (select route_id from route where route = 'CVT'))
+        ,  (3, 1, (select route_id from route where route = 'Perkiomen'))
+        ,  (4, 2, (select route_id from route where route = 'CVT'))
+        ,  (5, 2, (select route_id from route where route = 'Welsh Mountain'))
+        ,  (6, 2, (select route_id from route where route = 'Perkiomen'))
+        ,  (7, 3, (select route_id from route where route = 'SRT'))
+        ,  (8, 3, (select route_id from route where route = 'Welsh Mountain'))
+        ,  (9, 3, (select route_id from route where route = 'Oaks to Philly'))
+        ;

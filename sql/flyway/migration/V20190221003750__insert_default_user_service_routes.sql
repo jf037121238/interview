@@ -1,0 +1,11 @@
+insert into user_service_route(user_id, service_route_id)
+   values (42, 1)
+         ,(42, 2)
+         ,(42, 3)
+         ,(42, 4)
+         ,(42, 6)
+         ,(42, 5)
+         ,(42, 7)
+         ,(42, 8)
+         ,(42, 9)
+         ;
