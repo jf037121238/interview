@@ -53,7 +53,7 @@ return the user's routes for only the services listed.
 
 ## Building/Running
 
-These instructions are assuming you are on a *NIX system.
+These instructions are assuming you are on a *NIX system preferably running on OpenJDK
 
 ##### Configuring Postgresql.
 
@@ -73,6 +73,8 @@ Assuming docker and the docker daemon has already been installed run
 docker pull postgres
 to pull the latest postgresql docker image
 then run 
+```
+Then run
 
 ```$bash
 ./postgres-docker.sh create
