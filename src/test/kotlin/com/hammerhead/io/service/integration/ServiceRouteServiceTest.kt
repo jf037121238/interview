@@ -29,13 +29,46 @@ class ServiceRouteServiceTest {
     }
 
     @Test
-    fun `test route service expecting exactly 2 "SRT", 2 "CVT", 2 "Perkiomen", 2 "Welsh Mountain", 1 "Oaks to Philly" returned`() {
+    fun `test route service expecting exactly 2 SRT`(){
         val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
         val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "SRT" }.size == 2) { "SRT route was not returned exactly 2 times" }
+    }
+
+
+    @Test
+    fun `test route service expecting exactly 2 CVT`(){
+        val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "CVT" }.size == 2) { "CVT route was not returned exactly 2 times" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 2 Perkiomen`(){
+        val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Perkiomen" }.size == 2) { "Perkiomen route not returned exactly 2 times" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 2 Welsh Mountain`(){
+        val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Welsh Mountain" }.size == 2) { "Welsh Mountain route was not returned exactly 2 times" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 1 Oaks to Philly`(){
+        val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Oaks to Philly" }.size == 1) { "Oaks to Philly route was not returned exactly once" }
     }
+    @Test
+    fun `test route service expecting exactly 9 records returned`() {
+        val mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/service/route")).andExpect(MockMvcResultMatchers.status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>() {})
+        assert(routeList.size == 9) { "More or less than 9 records were returned" }
+    }
+
+
 }

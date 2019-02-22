@@ -30,16 +30,45 @@ class RouteServiceTest {
     }
 
     @Test
-    fun `test route service expecting exactly 1 "SRT", "CVT", "Perkiomen", "Welsh Mountain", "Oaks to Philly" returned`() {
+    fun `test route service expecting exactly 1 SRT`() {
         val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
         val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "SRT" }.size == 1) { "SRT route was missing or returned more than once!" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 1 CRT`() {
+        val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "CVT" }.size == 1) { "CVT route was missing or returned more than once!" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 1 Perkiomen`() {
+        val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Perkiomen" }.size == 1) { "Perkiomen route was missing or returned more than once!" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 1 Welsh Mountain`() {
+        val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Welsh Mountain" }.size == 1) { "Welsh Mountain route was missing or returned more than once!" }
+    }
+
+    @Test
+    fun `test route service expecting exactly 1 Oaks to Philly`() {
+        val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
         assert(routeList.filter { it == "Oaks to Philly" }.size == 1) { "Oaks to Philly route was missing or returned more than once!" }
     }
 
-
+    @Test
+    fun `test route service expecting exactly 5 routes` () {
+        val mvcResult = this.mockMvc.perform(get("/route")).andExpect(status().isOk).andReturn()
+        val routeList = TestUtil.resultToTypeRef(mvcResult, object : TypeReference<List<String>>(){})
+        assert(routeList.size == 5) { "More or less than 5 routes were returned" }
+    }
 
 }
