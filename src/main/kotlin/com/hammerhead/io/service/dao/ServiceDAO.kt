@@ -15,4 +15,9 @@ class ServiceDAO {
     @Column(name = "service")
     lateinit var service : String
 
+
+    @Column(name = "user_string")
+    @Enumerated(EnumType.STRING)
+    lateinit var userPrependEnum: ServiceUserPrependEnum
+
 }
