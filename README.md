@@ -90,13 +90,30 @@ password: password
 
 ##### Migrating with flyway
 
-The database structure and data is managed using flyway migrations. The flyway binary has been included in this project
-for convenience.
+The database structure and data is managed using flyway migrations. This can be achieved using a gradle plugin. 
 
-from the flyway-5.1.3 directory, run the command 
+to run flyway clean and migrate simply run 
 
 ```$bash
-./flyway -schemas=<schemas> -locations=filesystem:../sql/flyway/migration/ -url=<jdbcUrl> -user=<jdbcUser> migrate
+./gradlew flywayClean flywayMigrate
+``` 
+
+If you need to change the datasource information, you can override the default changes with build flags for example
+
+```$bash
+./gradlew -Dflyway.user=myUser -Dflyway.schemas=schema1,schema2 -Dflyway.placeholders.keyABC=valueXYZ
+```
+
+Or, you can override values directly in the gradle flyway closure located in build.gradle
+
+```gradle
+flyway {
+    url = 'jdbc:postgresql://localhost/hammerheaddb'
+    user = 'postgres'
+    password = 'password'
+    schemas = ['hammerheaddb']
+    locations = ['filesystem:sql/flyway/migration']
+}
 ```
 
 ##### Building
