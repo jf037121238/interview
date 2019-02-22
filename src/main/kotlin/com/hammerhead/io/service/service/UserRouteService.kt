@@ -1,6 +1,5 @@
 package com.hammerhead.io.service.service
 
-import com.hammerhead.io.service.dao.UserServiceRouteDAO
 import com.hammerhead.io.service.repository.UserServiceRouteRepository
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
@@ -19,10 +18,6 @@ class UserRouteService(val userServiceRouteRepository: UserServiceRouteRepositor
                     .findAllByPk_User_UsersIdAndPk_ServiceRouteDAO_Service_ServiceIn(userId, service.split(","))
         } else {
             userServiceRouteRepository.findAllByPk_User_UsersId(userId)
-        }.map { getUserRouteString(it) }
-    }
-
-    fun getUserRouteString(userServiceRouteDAO: UserServiceRouteDAO): String {
-        return "${userServiceRouteDAO.pk.user.usersId}${userServiceRouteDAO.pk.serviceRouteDAO.route.route}"
+        }.map { it.pk.serviceRouteDAO.service.userPrependEnum.userStringFunction(it) }
     }
 }
